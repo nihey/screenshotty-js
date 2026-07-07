@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>screenshotty-js — JavaScript client for the Screenshotty screenshot API</title>
+    <meta
+      name="description"
+      content="Official JavaScript & TypeScript client for the Screenshotty screenshot API. Capture pixel-perfect screenshots and PDFs of any website or HTML with one call."
+    />
+    <link rel="canonical" href="https://nihey.github.io/screenshotty-js/" />
+    <meta property="og:title" content="screenshotty-js — client for the Screenshotty screenshot API" />
+    <meta property="og:description" content="Capture pixel-perfect screenshots and PDFs of any website or HTML with one call." />
+    <meta property="og:url" content="https://nihey.github.io/screenshotty-js/" />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --fg: #0f172a;
+        --muted: #64748b;
+        --border: #e2e8f0;
+        --card: #f8fafc;
+        --accent: #4f46e5;
+        --accent-fg: #ffffff;
+        --code-bg: #0f172a;
+        --code-fg: #e2e8f0;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b1120;
+          --fg: #e2e8f0;
+          --muted: #94a3b8;
+          --border: #1e293b;
+          --card: #111827;
+          --accent: #818cf8;
+          --accent-fg: #0b1120;
+          --code-bg: #020617;
+          --code-fg: #e2e8f0;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+      header { padding: 72px 0 40px; text-align: center; }
+      .badge {
+        display: inline-block; font-size: 13px; color: var(--muted);
+        border: 1px solid var(--border); border-radius: 999px; padding: 4px 14px; margin-bottom: 20px;
+      }
+      h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.15; margin: 0 0 16px; letter-spacing: -0.02em; }
+      .lead { font-size: 19px; color: var(--muted); max-width: 620px; margin: 0 auto 28px; }
+      .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      .btn {
+        display: inline-block; padding: 11px 22px; border-radius: 10px; font-weight: 600; font-size: 15px;
+      }
+      .btn-primary { background: var(--accent); color: var(--accent-fg); }
+      .btn-primary:hover { text-decoration: none; opacity: 0.9; }
+      .btn-ghost { border: 1px solid var(--border); color: var(--fg); }
+      .btn-ghost:hover { text-decoration: none; border-color: var(--accent); }
+      section { padding: 28px 0; }
+      h2 { font-size: 22px; margin: 8px 0 16px; letter-spacing: -0.01em; }
+      pre {
+        background: var(--code-bg); color: var(--code-fg); padding: 18px 20px; border-radius: 12px;
+        overflow-x: auto; font-size: 14px; line-height: 1.55;
+      }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      p code, li code { background: var(--card); border: 1px solid var(--border); border-radius: 5px; padding: 1px 6px; font-size: 13px; }
+      .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; padding: 0; list-style: none; margin: 0; }
+      .features li { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+      .features b { display: block; margin-bottom: 4px; }
+      .features span { color: var(--muted); font-size: 14px; }
+      footer { border-top: 1px solid var(--border); margin-top: 32px; padding: 32px 0 56px; color: var(--muted); font-size: 14px; text-align: center; }
+      footer a { margin: 0 8px; }
+    </style>
+  </head>
+  <body>
+    <header class="wrap">
+      <span class="badge">npm install screenshotty</span>
+      <h1>The JavaScript client for the Screenshotty screenshot API</h1>
+      <p class="lead">
+        Capture pixel-perfect screenshots and PDFs of any website or raw HTML with a
+        single, fully-typed call — powered by
+        <a href="https://screenshotty.link">Screenshotty</a>.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://screenshotty.link">Get a free API key</a>
+        <a class="btn btn-ghost" href="https://github.com/nihey/screenshotty-js">View on GitHub</a>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section>
+        <h2>Quick start</h2>
+        <pre><code>import { Screenshotty } from "screenshotty";
+
+const client = new Screenshotty(process.env.SCREENSHOTTY_API_KEY);
+
+// Raw PNG bytes
+const png = await client.capture({ url: "https://example.com", fullPage: true });
+
+// …or just the hosted URL
+const url = await client.captureToUrl({ url: "https://example.com" });</code></pre>
+        <p>
+          Grab a free key (1,500 screenshots/month, no credit card) from the
+          <a href="https://screenshotty.link">Screenshotty dashboard</a>, or try requests live in the
+          <a href="https://screenshotty.link/screenshot-api">interactive playground</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>What you can capture</h2>
+        <ul class="features">
+          <li><b>Full-page &amp; element</b><span>Whole scrollable pages or a single CSS selector.</span></li>
+          <li><b>Any device</b><span>Viewport presets from desktop 4K to iPhone, with device scale.</span></li>
+          <li><b>PNG, JPEG, WebP, PDF</b><span>One <code>format</code> option, including PDF export.</span></li>
+          <li><b>Clean shots</b><span>Ad-blocking and cookie-banner removal built in.</span></li>
+          <li><b>Dark mode &amp; geo</b><span>Force color scheme; target by country.</span></li>
+          <li><b>Auth &amp; injection</b><span>Cookies, headers, and custom JS/CSS before capture.</span></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Website → PDF</h2>
+        <pre><code>const pdf = await client.capture({
+  url: "https://example.com",
+  format: "application/pdf",
+  printed: true,
+});</code></pre>
+      </section>
+
+      <section>
+        <h2>Learn more</h2>
+        <p>
+          Full parameter reference and guides live in the
+          <a href="https://screenshotty.link/docs">Screenshotty API documentation</a>. Compare plans on the
+          <a href="https://screenshotty.link">Screenshotty homepage</a> — the free tier includes 1,500
+          screenshots per month with pay-as-you-go beyond that.
+        </p>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <div>
+        <a href="https://screenshotty.link">Screenshotty</a>
+        <a href="https://screenshotty.link/docs">Docs</a>
+        <a href="https://screenshotty.link/screenshot-api">Playground</a>
+        <a href="https://github.com/nihey/screenshotty-js">GitHub</a>
+        <a href="https://www.npmjs.com/package/screenshotty">npm</a>
+        <a href="https://x.com/screenshotty">X</a>
+      </div>
+      <p>Open-source (MIT) client for the <a href="https://screenshotty.link">Screenshotty screenshot API</a>.</p>
+    </footer>
+  </body>
+</html>

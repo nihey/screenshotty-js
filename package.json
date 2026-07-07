@@ -1,0 +1,55 @@
+{
+  "name": "screenshotty",
+  "version": "0.1.0",
+  "description": "Official JavaScript/TypeScript client for the Screenshotty screenshot API — capture pixel-perfect screenshots and PDFs of any website or HTML.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "screenshot",
+    "screenshot-api",
+    "website-screenshot",
+    "html-to-image",
+    "html-to-pdf",
+    "puppeteer",
+    "playwright",
+    "url-to-image",
+    "og-image",
+    "pdf"
+  ],
+  "homepage": "https://screenshotty.link",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nihey/screenshotty-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nihey/screenshotty-js/issues"
+  },
+  "author": "Nihey Takizawa",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
