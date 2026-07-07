@@ -1,5 +1,5 @@
 {
-  "name": "screenshotty",
+  "name": "screenshotty-js",
   "version": "0.1.0",
   "description": "Official JavaScript/TypeScript client for the Screenshotty screenshot API — capture pixel-perfect screenshots and PDFs of any website or HTML.",
   "type": "module",
@@ -44,6 +44,9 @@
   },
   "author": "Nihey Takizawa",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=18"
   },

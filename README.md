@@ -3,7 +3,7 @@
 Official JavaScript / TypeScript client for the **[Screenshotty](https://screenshotty.link)** screenshot API — capture pixel-perfect screenshots and PDFs of any website or raw HTML with a single call.
 
 [![CI](https://github.com/nihey/screenshotty-js/actions/workflows/ci.yml/badge.svg)](https://github.com/nihey/screenshotty-js/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/screenshotty.svg)](https://www.npmjs.com/package/screenshotty)
+[![npm](https://img.shields.io/npm/v/screenshotty-js.svg)](https://www.npmjs.com/package/screenshotty-js)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
 - 📸 Full-page, element, mobile, and PDF capture
@@ -16,13 +16,13 @@ Official JavaScript / TypeScript client for the **[Screenshotty](https://screens
 ## Install
 
 ```bash
-npm install screenshotty
+npm install screenshotty-js
 ```
 
 ## Quick start
 
 ```ts
-import { Screenshotty } from "screenshotty";
+import { Screenshotty } from "screenshotty-js";
 
 const client = new Screenshotty(process.env.SCREENSHOTTY_API_KEY!);
 
@@ -119,7 +119,7 @@ always-current parameter reference in the [Screenshotty API docs](https://screen
 Non-2xx responses throw a `ScreenshottyError` with `.status` and `.body`:
 
 ```ts
-import { ScreenshottyError } from "screenshotty";
+import { ScreenshottyError } from "screenshotty-js";
 
 try {
   await client.capture({ url: "https://example.com" });
